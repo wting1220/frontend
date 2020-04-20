@@ -1,28 +1,9 @@
-import React, { memo, useState, useEffect } from 'react'
-import { Avatar, Row, Col } from 'antd'
-import photo from '../../assets/1.jpg'
+import React, { memo } from 'react'
+import { Row, Col } from 'antd'
 import TopicContent from '../topic/topicContent'
 import ThemeRight from './themeRight'
 
 export default memo(function ThemeList() {
-
-  const [resData, setResData] = useState<any>([])
-
-  useEffect(() => {
-    setResData([
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-    ])
-  }, [])
 
   return (
     <div className='theme-detail'>

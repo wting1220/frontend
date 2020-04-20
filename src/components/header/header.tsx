@@ -37,7 +37,7 @@ export default memo(function MainHeader() {
   }
 
   useEffect(() => {
-    setNav(location.pathname.split('/')[1])
+    setNav(location.pathname.split('/')[1] || 'welcome')
   }, [location.pathname])
 
   return (

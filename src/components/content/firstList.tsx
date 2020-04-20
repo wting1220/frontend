@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider, Skeleton, Tooltip, Avatar } from 'antd'
+import { Divider, Skeleton, Tooltip } from 'antd'
 import { HeartOutlined, MessageOutlined, ShareAltOutlined } from '@ant-design/icons'
 import { FirstListProps } from '../../utils/interface'
 import { useHistory } from 'react-router'
