@@ -1,0 +1,97 @@
+@import "common.scss";
+
+.ant-layout .main-container {
+  @include padding;
+  @include screen;
+}
+
+.ant-layout {
+  background: #faeff9;
+}
+
+.mar,
+.topic-right-li,
+.theme-info {
+  margin-bottom: 15px;
+}
+
+.ad {
+  height: 300px;
+  background: yellowgreen;
+}
+
+.container,
+.topic,
+.message,
+.theme,
+.tags-radio,
+.user-info,
+.search-left,
+.setting-container {
+  margin-top: 15px;
+}
+
+.nav-anthor,
+.ant-layout-header,
+.tags-nav,
+.content-add,
+.content-show,
+.topic-right-li,
+.content-left,
+.content-right,
+.message-content,
+.user,
+.activity-container-title,
+.ant-tabs-bar,
+.activity-container-attention,
+.search-left,
+.theme-info,
+.theme-user,
+.setting-container {
+  background-color: white;
+}
+
+$color: #f6b7f5;
+.tooltip-bottom {
+  margin-top: 12px;
+  @include flex(center);
+  .ant-btn {
+    border-color: $color;
+    color: $color;
+  }
+}
+.ant-tooltip-inner {
+  padding: 12px 24px;
+  min-width: 220px;
+}
+.ant-tooltip-inner,
+.ant-tooltip-arrow::before {
+  background-color: white;
+  color: rgba($color: #000000, $alpha: 0.7);
+}
+.tooltip-top {
+  @include flex(center, flex-start);
+  .top-img {
+    .ant-avatar {
+      @include width(64px !important);
+      margin-right: 16px;
+      img {
+        @include width(64px);
+      }
+    }
+  }
+  .top-detail {
+    span {
+      &:first-child {
+        font-weight: 900;
+        font-size: 16px;
+      }
+      &:last-child {
+        background: plum;
+        padding: 0 6px;
+        @include height(14px);
+        margin-left: 6px;
+      }
+    }
+  }
+}

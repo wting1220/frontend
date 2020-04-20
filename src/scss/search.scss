@@ -1,0 +1,67 @@
+@import './common.scss';
+
+.search {
+  .ant-tabs-nav-container {
+    font-size: 12px;
+    .ant-tabs-nav .ant-tabs-tab {
+      &::before {
+        content: "·";
+        top: 9px;
+        left: -9px;
+      }
+    }
+  }
+}
+
+// 用户或者标签信息展示模块
+.userTagsShow {
+  padding: 6px 20px;
+  height: 96px;
+  border-top: 1px solid rgb(240, 240, 240);
+  background-color: white;
+  &:hover {
+    background-color: #f5dff4;
+  }
+  &:first-of-type {
+    border-top: none;
+  }
+  @include flex(center);
+  .userTagsShow-left {
+    @include flex(center, flex-start);
+    .userOrtags {
+      margin-left: 20px;
+      
+      .name {
+        font-size: 16px;
+        color: #333333;
+        font-weight: 600;
+      }
+      .level {
+        margin-left: 4px;
+        background-color: #dda0dd;
+        font-size: 12px;
+        @include height(12px)
+      }
+      .info,
+      .count {
+        margin-top: 6px;
+        font-size: 12px;
+        color: rgb(185, 192, 200);
+        font-weight: 500;
+      }
+      .count {
+        color: #333333;
+        &:first-of-type {
+          &::after {
+            content: '·';
+            margin: 0 4px;
+          }
+        }
+      }
+    }
+  }
+  .ant-btn {
+    border-color: #dda0dd;
+    color: rebeccapurple;
+  }
+}

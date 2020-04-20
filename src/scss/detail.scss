@@ -1,0 +1,24 @@
+@import "common.scss";
+
+.detail {
+  .detail-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    .detail-name {
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .detail-level {
+      margin-left: 10px;
+      font-size: 12px;
+      padding: 0 3px;
+      color: white;
+      background-color: rgba(230, 207, 230, 1);
+    }
+  }
+  .detail-date {
+    font-size: 12px;
+    font-weight: 600;
+  }
+}

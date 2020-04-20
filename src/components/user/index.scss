@@ -1,0 +1,198 @@
+@import "../../scss/common.scss";
+
+.usercontainer {
+
+  // 用户信息页面
+  .user-info {
+    .user-info-left {
+      // 上面用户信息
+      .user {
+        padding: 30px;
+        @include flex(center);
+        .user-left {
+          @include flex(center, flex-start);
+          .user-avatar,
+          .user-name {
+            margin-right: 24px;
+            h1 {
+              font-size: 24px;
+            }
+            .add-info {
+              margin-bottom: 4px;
+              color: purple;
+              font-size: 15px;
+              &::before {
+                content: "+";
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+        .user-edit {
+          .ant-btn {
+            border-color: rgb(128, 49, 131);
+            color: rgb(128, 49, 131);
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 4px;
+          }
+        }
+      }
+
+      // 下面用户有关的信息展示
+      .user-detail {
+        margin-top: 12px;
+        .user-detail-content {
+          position: relative;
+        }
+        .ant-tabs-nav {
+          height: 50px;
+          .ant-tabs-tab {
+            margin-right: 0;
+            width: 90px;
+            @include height(50px);
+            text-align: center;
+          }
+        }
+        .ant-tabs-bar {
+          margin-bottom: 0;
+        }
+        .ant-tabs .ant-tabs-large-bar .ant-tabs-tab {
+          padding: 0;
+          font-weight: 500;
+        }
+        .activity-container {
+          .activity-container-topic,
+          .activity-container-attention {
+            margin-bottom: 8px;
+          }
+          .activity-container-title {
+            padding: 0 20px;
+            @include height(50px);
+            @include flex(center);
+            font-size: 15px;
+            border-bottom: 1px solid rgb(240, 240, 240);
+            .title-left {
+              color: #333333;
+              font-weight: 600;
+            }
+            .ant-menu-horizontal {
+              border-bottom: none;
+              line-height: 48px;
+
+              .ant-menu-item {
+                padding: 0;
+                margin-left: 24px;
+                font-size: 14px;
+                transition: none;
+                vertical-align: middle;
+                border-bottom: none;
+                top: 0;
+                &:nth-of-type(2) {
+                  &::before {
+                    width: 0;
+                  }
+                }
+                &:focus {
+                  outline: none;
+                }
+                &::before {
+                  content: "";
+                  width: 1px;
+                  background: rgba($color: #000000, $alpha: 0.3);
+                  height: 12px;
+                  position: absolute;
+                  left: -12px;
+                  top: 19px;
+                }
+              }
+              .ant-menu-item-selected,
+              .ant-menu-item:hover {
+                border-bottom: none;
+                font-weight: 600;
+                top: 0;
+              }
+            }
+          }
+          .activity-container-attention {
+            @include flex(center, flex-start);
+            padding: 16px 20px;
+            .activity-attention-msg {
+              margin-left: 12px;
+              font-size: 15px;
+              .name {
+                color: #333333;
+                font-weight: 600;
+              }
+              .default {
+                margin: 0 4px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 设置
+  .setting-container {
+    padding: 32px 48px 84px;
+    ul {
+      .photo {
+        padding: 12px 0;
+        .upload-photo {
+          @include flex(center, flex-start);
+          .upload {
+            @include flex(center);
+            flex-direction: column;
+            margin-left: 24px;
+            .warn{
+              font-size: 12px;
+              margin-bottom: 18px;
+            }
+          }
+        }
+      }
+      li {
+        border-bottom: 1px solid #faeff9;
+        @include flex(center);
+        padding: 24px 0;
+        .ant-btn {
+          border-color: plum;
+          color: plum;
+        }
+        .label {
+          width: 120px;
+          color: #333;
+          display: inline-block;
+        }
+        div {
+          flex: 1;
+        }
+        .ant-input-affix-wrapper-focused,
+        .ant-input:focus {
+          box-shadow: none;
+        }
+        .ant-input-affix-wrapper,
+        .ant-input {
+          border: none;
+          .ant-input {
+            color: #909090;
+            font-weight: 400;
+            font-size: 16px;
+          }
+          .suffix-edit {
+            color: plum;
+            font-size: 14px;
+          }
+          .suffix-save {
+            span:first-child {
+              color: plum; 
+              margin-right: 6px; 
+            }
+          }
+        }
+      }
+    }
+  }
+}

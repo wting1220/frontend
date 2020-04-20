@@ -1,0 +1,66 @@
+@import '../../scss/common.scss';
+
+// left
+.content-left,
+.search {
+  .ant-tabs-bar,
+  .list-content {
+    padding: 0 25px;
+  }
+  .ant-tabs-bar {
+    margin-bottom: 24px;
+  }
+  // 文章list样式
+.list-content {
+  display: flex;
+  .item-left {
+    width: 75%;
+    .info {
+      font-size: 12px;
+      margin-bottom: 6px;
+      ul {
+        @include flex(baseline, flex-start);
+        white-space: nowrap;
+        .item {
+          &:nth-child(1) {
+            font-weight: 500;
+            @include color(purple);
+          }
+          &::after {
+            content: "·";
+            @include color(rgb(178, 186, 194));
+            margin: 0 4px;
+          }
+        }
+        .hov:hover {
+          @include color;
+        }
+      }
+    }
+    .title {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      h2:hover {
+        text-decoration: underline;
+      }
+    }
+    .comment {
+      li {
+        font-size: 12px;
+        display: inline-block;
+        padding: 2px 8px;
+        border: 1px solid #eeeeee;
+      }
+    }
+  }
+  .item-right {
+    flex: 1;
+    text-align: center;
+    img {
+      height: 72px;
+    }
+  }
+}
+
+}
+

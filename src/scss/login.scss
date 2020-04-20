@@ -1,0 +1,23 @@
+@import 'common.scss';
+
+.ant-modal {
+  width: auto !important;
+}
+.login {
+  @include flex(center, center);
+  .login-form{
+    width: 300px;
+    .login-form-button {
+      width: 100%;
+    }
+    .login-form-forgot {
+      float: right;
+    }
+    .go-regist {
+      margin-top: 1em;
+      span {
+        @include color(plum);
+      }
+    }
+  }
+}

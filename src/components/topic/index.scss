@@ -1,0 +1,264 @@
+@import "../../scss/common.scss";
+$color: #f6b7f5;
+
+.topic {
+  // 左边导航栏
+  .topic-nav {
+    .ant-menu-vertical {
+      border-right: none;
+    }
+    .ant-menu {
+      padding: 16px 12px;
+      .ant-menu-item {
+        border-radius: 6px;
+      }
+    }
+  }
+  .topic-right {
+    .topic-right-li {
+      .topic-user {
+        border-bottom: 1px solid #efcfee;
+        a { @include flex(center, flex-start); }
+        padding: 16px;
+        .ant-avatar {
+          border: 1px solid #fff;
+          box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.15);
+        }
+        .topic-user-name {
+          margin-left: 12px;
+          span {
+            font-size: 15px;
+            font-weight: 500;
+          }
+        }
+      }
+      .topic-info {
+        @include flex(center);
+        padding: 16px 0;
+        li {
+          width: calc(100%/3);
+          a {
+            @include flex(center);
+            flex-direction: column;
+            .label {
+              @include fontHeight(13px);
+              color: #8A9AA9;
+            }
+            .count {
+              @include fontHeight(15px);
+              font-weight: 500;
+              display: inline-block;
+              margin-top: 4px;
+              color: #333;
+            }
+          }
+          border-right: 1px solid #efcfee;
+          &:last-of-type {
+            border-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 中间部分
+.topic-content,
+.theme-detail {
+  .content-li {
+    margin-bottom: 10px;
+  }
+  .ant-menu {
+    @include flex(center, center);
+    .ant-menu-item {
+      margin: 0;
+      @include height(42px);
+      width: 160px;
+      font-size: 15px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .ant-menu-item-selected {
+      background-color: white;
+    }
+  }
+  .content-add {
+    padding: 20px 16px 0;
+    position: relative;
+    .add-div {
+      min-height: 100px;
+      border: 1px solid $color;
+      padding: 3px;
+      background-color: #faeff9;
+      border-radius: 6px;
+      &:focus {
+        outline-color: $color;
+        border-radius: 3px;
+      }
+      .add-input {
+        &:empty::before {
+          color: lightgrey;
+          content: attr(placeholder);
+        }
+      }
+    }
+    .ant-dropdown {
+      box-sizing: border-box;
+      background-color: white;
+      box-shadow: 0 5px 18px 0 rgba($color: #928af1, $alpha: 0.2);
+      width: 316px;
+      border-radius: 3px;
+      z-index: 200;
+      position: relative;
+      border: 1px solid rgba($color: #928af1, $alpha: 0.3);
+      &::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        opacity: 1;
+        background-color: white;
+        border-left: 1px solid rgba($color: #928af1, $alpha: 0.3);
+        border-top: 1px solid rgba($color: #928af1, $alpha: 0.3);
+        left: 152px;
+        transform: rotate(45deg);
+      }
+      .ant-input-affix-wrapper {
+        margin: 16px 20px 0;
+        border-color: rgba($color: #928af1, $alpha: 0.5);
+        .ant-input-search-icon {
+          color: rgba($color: #928af1, $alpha: 0.5);
+        }
+      }
+      ul {
+        height: 318px;
+        overflow: auto;
+        li {
+          height: 64px;
+          padding: 0 20px;
+          margin: 0;
+          line-height: normal;
+          &:hover {
+            background-color: #faeff9;
+          }
+          .list-border {
+            @include width(100%);
+            @include flex(center, flex-start);
+            border-top: 1px solid rgba($color: #928af1, $alpha: 0.5);
+          }
+          .ant-avatar {
+            border-radius: 8px;
+            margin-right: 14px;
+          }
+          .topic-name {
+            font-size: 15px;
+            color: #333333;
+            font-weight: 600;
+          }
+          .topic-detail {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+    .add-number {
+      position: absolute;
+      right: 24px;
+      bottom: 56px;
+    }
+    .add-imgs {
+      margin-top: 36px;
+    }
+    .add-btn {
+      padding: 10px 0;
+      @include flex(center);
+      .span-icon {
+        color: #928af1;
+        margin-right: 16px;
+      }
+      .ant-btn {
+        background-color: $color;
+        border: 1px solid $color;
+        color: white;
+      }
+    }
+  }
+}
+
+// 展示页面
+.content-show {
+  .show-detail {
+    padding: 16px 20px;
+    @include flex;
+    .ant-avatar {
+      @include width(48px);
+    }
+    .show-detail-content {
+      margin: 0 16px;
+      .show-user {
+        @include flex(center);
+        .name {
+          font-size: 16px;
+          font-weight: bold;
+        }
+        .ant-btn {
+          border-color: #928af1;
+          color: #928af1;
+        }
+        .label {
+          font-size: 12px;
+        }
+      }
+      .content {
+        margin: 8px 0;
+        color: #333333;
+      }
+    }
+    .ant-dropdown-link {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  .show-utils {
+    border-top: 1px solid rgb(240, 240, 240);
+    @include height(34px);
+    text-align: center;
+    .utils {
+      width: calc(100% / 3);
+      position: relative;
+      &:last-child {
+        &::after {
+          width: 0;
+        }
+      }
+      &::after {
+        content: "";
+        width: 1px;
+        position: absolute;
+        right: 0;
+        background-color: rgb(240, 240, 240);
+        height: 22px;
+        top: 6px;
+      }
+    }
+  }
+  .detail-comment {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-left: 1px solid $color;
+      border-top: 1px solid $color;
+      background-color: white;
+      left: 50%;
+      top: -8px;
+      transform: rotate(45deg);
+    }
+    border-top: 1px solid $color;
+    padding: 16px 20px;
+    .comment-add {
+      margin-top: 0;
+    }
+  }
+}

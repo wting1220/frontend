@@ -1,0 +1,41 @@
+@mixin flex($items: '', $content: space-between) {
+  display: flex;
+  justify-content: $content;
+  align-items: $items;
+}
+
+@mixin height($num) {
+  height: $num;
+  line-height: $num;
+}
+
+@mixin color($color:#BA55D3) {
+  color: $color;
+}
+
+@mixin screen($width3:0, $width1: (0 8%), $width2:(0 5%)) {
+  @media (max-width: 1200px) {
+    padding: $width1;
+  }
+  @media (max-width: 1100px) {
+    padding: $width2;
+  }
+  @media (max-width: 992px) {
+    padding: $width3;
+  }
+}
+
+@mixin padding($padding:(0 15%)) {
+  padding: $padding;
+}
+
+@mixin width($width) {
+  width: $width;
+  height: $width;
+}
+
+@mixin fontHeight($size) {
+  font-size: $size;
+  line-height: $size;
+}
+

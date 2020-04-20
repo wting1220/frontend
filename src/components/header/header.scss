@@ -1,0 +1,120 @@
+@import "../../scss/common.scss";
+
+.regist-login {
+  @include flex;
+}
+
+.header {
+  height: 64px;
+  // position: relative;
+  z-index: 1000;
+  .ant-dropdown-placement-bottomRight {
+    top: 64px !important;
+    z-index: 1000;
+  }
+  .ant-menu::after {
+    content: none;
+  }
+  .ant-layout-header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 0;
+    white-space: nowrap;
+    border-bottom: 1px solid #f1f1f1;
+    .header-container {
+      padding: 0 15%;
+      @include screen((0 20px));
+    }
+    .logo {
+      font-size: 30px;
+      font-weight: 600;
+    }
+    .ant-menu-horizontal {
+      @include height(64px);
+    }
+    .ant-menu-item .anticon {
+      margin-right: 0;
+      font-size: 20px;
+    }
+    .nav-menu {
+      .ant-menu {
+        font-size: 18px;
+        font-weight: 600;
+        @include flex;
+      }
+    }
+
+    .ant-menu-item,
+    .ant-menu-submenu-title {
+      padding: 0;
+      .anticon-user {
+        margin-right: 0;
+        font-size: 20px;
+      }
+    }
+    .write {
+      & {
+        display: inline-block;
+        @include color;
+      }
+    }
+    .ant-menu-horizontal > .ant-menu-item:hover,
+    .ant-menu-horizontal > .ant-menu-item-active,
+    .ant-menu-horizontal > .ant-menu-item-open,
+    .ant-menu-horizontal > .ant-menu-item-selected,
+    .ant-menu-horizontal > .ant-menu-item,
+    .ant-menu-horizontal > .ant-menu-submenu {
+      border-bottom: none;
+      top: 0;
+    }
+    .regist-login {
+      @include color;
+      padding-left: 20px;
+      border-left: 2px solid #f1f1f1;
+      margin: 20px 0;
+      line-height: 23px;
+      & > div:last-child::before {
+        content: "·";
+        margin: 0 8px;
+      }
+    }
+    .user {
+      .ant-badge {
+        font-size: 16px;
+        margin-right: 20px;
+      }
+      ul.ant-dropdown-menu {
+        width: 160px;
+        padding: 12px 0;
+        li.ant-dropdown-menu-item {
+          padding: 6px 12px;
+          font-size: 16px;
+          .anticon {
+            margin-right: 10px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.subPop {
+  top: 64px !important;
+  ul.ant-menu-sub {
+    width: 160px;
+    padding: 12px 0;
+  }
+  .ant-menu-vertical.ant-menu-sub > .ant-menu-item {
+    line-height: 20px;
+    padding: 6px 16px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    .anticon {
+      font-size: 16px;
+    }
+  }
+}

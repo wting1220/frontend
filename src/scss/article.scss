@@ -1,0 +1,18 @@
+@import 'common.scss';
+
+.ant-layout {
+  min-height: 100vh;
+  .article {
+    padding: 0 -15%;
+    @include screen;
+    .title {
+      @include height(60px);
+      padding: 0 15px;
+    }
+    .content {
+      height: calc(100% - 60px);
+    }
+  }
+  
+}
+

@@ -1,0 +1,11 @@
+@import 'common.scss';
+
+.regist {
+  @include flex(center, center);
+  .ant-form{
+    width: 300px;
+    .regist-btn {
+      width: 100%;
+    }
+  }
+}

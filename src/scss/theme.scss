@@ -1,0 +1,42 @@
+@import "./common.scss";
+
+.theme {
+  .theme-list {
+    padding: 12px;
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+      padding: 0 18px;
+    }
+    .theme-lists {
+      @include flex(center, flex-start);
+      max-width: 920px;
+      flex-wrap: wrap;
+      li {
+        height: 108px;
+        @include flex(center, flex-start);
+        padding: 18px 14px;
+        .ant-avatar {
+          border-radius: 8px;
+          margin-right: 20px;
+        }
+        .li-right {
+          @include flex;
+          flex-direction: column;
+          .topic-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333333;
+          }
+          .topic-detail,
+          .topic-btn {
+            font-size: 13px;
+          }
+          .topic-btn {
+            color: purple;
+          }
+        }
+      }
+    }
+  }
+}
