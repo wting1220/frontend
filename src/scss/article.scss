@@ -1,18 +1,104 @@
-@import 'common.scss';
+@import "common.scss";
 
 .ant-layout {
   min-height: 100vh;
   .article {
-    padding: 0 -15%;
-    @include screen;
     .title {
-      @include height(60px);
+      background-color: white;
+      @include height(64px);
+      @include flex(center);
       padding: 0 15px;
+      .navbar {
+        @include flex(center)
+      }
+      h1 {
+        margin-bottom: 0;
+        margin-right: 20px;
+        flex: 1;
+        .ant-input {
+          border: none;
+          background-color: transparentize($color: #000000, $amount: 1);
+          @include height(64px);
+          font-size: 24px;
+          font-weight: 600;
+          &:focus {
+            border: none;
+            box-shadow: none;
+          }
+        }
+      }
+      .anticon-picture {
+        font-size: 18px;
+        color: plum;
+        vertical-align: middle;
+      }
+      .publish {
+        font-size: 16px;
+        font-weight: 600;
+        color: plum;
+        margin-left: 20px;
+      }
+      .ant-dropdown,
+      .ant-dropdown-placement-bottomRight {
+        top: 65px !important;
+      }
+      .drop-menu {
+        width: 320px;
+        background-color: white;
+        padding: 24px;
+        color: rgba(0, 0, 0, 0.5);;
+        h2 {
+          margin-bottom: 18px;
+          font-size: 18px;
+          font-weight: 700;
+          color: rgba(0, 0, 0, 0.5);;
+        }
+        .type-box,
+        .label-box {
+          margin-bottom: 12px;
+          p {
+            margin-bottom: 12px;
+            font-size: 16px;
+          }
+          .ant-menu-horizontal {
+            border-bottom: none;
+            .ant-menu-item-selected {
+              background-color: #faeff9;
+            }
+            .ant-menu-item {
+              border: 1px solid #f1f1f1;
+              height: 26px;
+              line-height: 18px;
+              margin: 0 8px 8px 0;
+              padding: 4px 8px;
+              color: #909090;
+              &:focus-within,
+              &:hover,
+              &:focus {
+                background-color: #faeff9;
+              }
+            }
+          }
+        }
+        .btn {
+          padding-top: 12px;
+          text-align: center;
+          .ant-btn {
+            margin: auto;
+            font-weight: 600;
+            color: plum;
+            border-color: plum;
+          }
+        }
+      }
     }
     .content {
-      height: calc(100% - 60px);
+      height: calc(100vh - 64px);
+      .rc-md-editor,
+      .rc-md-navigation,
+      .rc-md-editor .editor-container .sec-md .input {
+        background-color: rgba($color: #000000, $alpha: 0);
+      }
     }
   }
-  
 }
-

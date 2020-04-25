@@ -2,7 +2,7 @@ import React, { memo, useState } from 'react'
 import { Avatar, Dropdown, Menu, Button, Tag, Tooltip } from 'antd'
 import { LikeOutlined, MessageOutlined, ShareAltOutlined } from '@ant-design/icons'
 import DetailComment from '../detail/detailComment'
-import { userText } from '../../utils/commen'
+import { userText } from '../../common/commen'
 
 export default memo(function TopicShow({ item }: any) {
 

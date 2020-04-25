@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import ReactMarkdown from 'react-markdown'
-import CodeBlock from '../../utils/codeBlock.jsx'
+import CodeBlock from '../../common/codeBlock.jsx'
 import { Avatar, Button, Divider } from 'antd'
 import moment from 'moment'
 import DetailUser from './detailUser'

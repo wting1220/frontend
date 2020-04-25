@@ -1,9 +1,9 @@
 import React from 'react'
 import { Divider, Skeleton, Tooltip } from 'antd'
 import { HeartOutlined, MessageOutlined, ShareAltOutlined } from '@ant-design/icons'
-import { FirstListProps } from '../../utils/interface'
+import { FirstListProps } from 'src/common/interface'
 import { useHistory } from 'react-router'
-import { IconText, userText } from '../../utils/commen'
+import { IconText, userText } from 'src/common/commen'
 import photo from '../../assets/4da52382276a71cebd0b922c535ab7ce.jpg'
 
 const FirstList = ({ firstList }: FirstListProps) => {

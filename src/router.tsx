@@ -102,7 +102,7 @@ const routes = [
                 ]
               },
               {
-                path: '/user/:id/:type?',
+                path: '/user/:uid/:type?',
                 name: 'info',
                 component: UserInfo,
               }

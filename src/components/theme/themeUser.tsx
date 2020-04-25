@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect } from 'react'
 import { Tooltip, Avatar, Drawer, message } from 'antd'
 import { RightOutlined } from '@ant-design/icons'
-import { userText, userTagsShow } from '../../utils/commen'
+import { userText, userTagsShow } from '../../common/commen'
 import { useHistory } from 'react-router'
 
 export default memo(function ThemeUser() {

@@ -1,12 +1,7 @@
 @import "../../scss/common.scss";
 
-.regist-login {
-  @include flex;
-}
-
 .header {
   height: 64px;
-  // position: relative;
   z-index: 1000;
   .ant-dropdown-placement-bottomRight {
     top: 64px !important;
@@ -39,10 +34,13 @@
       font-size: 20px;
     }
     .nav-menu {
+      @include flex(center);
       .ant-menu {
         font-size: 18px;
         font-weight: 600;
         @include flex;
+        flex: 1;
+        margin-right: 20px;
       }
     }
 
@@ -71,50 +69,45 @@
     }
     .regist-login {
       @include color;
+      @include flex;
       padding-left: 20px;
-      border-left: 2px solid #f1f1f1;
+      border-left: 2px solid #faeff9;
       margin: 20px 0;
-      line-height: 23px;
+      line-height: 22px;
+      font-size: 18px;
+        font-weight: 600;
       & > div:last-child::before {
         content: "·";
         margin: 0 8px;
       }
     }
     .user {
+      @include flex(center);
+      @include height(64px);
+      border-bottom: 1px solid #f1f1f1;
       .ant-badge {
         font-size: 16px;
-        margin-right: 20px;
       }
-      ul.ant-dropdown-menu {
-        width: 160px;
-        padding: 12px 0;
-        li.ant-dropdown-menu-item {
-          padding: 6px 12px;
-          font-size: 16px;
-          .anticon {
-            margin-right: 10px;
-            font-size: 16px;
-          }
-        }
-      }
+    }
+  }
+}
+ul.ant-dropdown-menu {
+  width: 160px;
+  padding: 12px 0;
+  li.ant-dropdown-menu-item {
+    line-height: 20px;
+    padding: 6px 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #717771;
+    .anticon {
+      margin-right: 10px;
+      font-size: 16px;
+    }
+    &:hover {
+      background-color: #faeff9;
+      color: white;
     }
   }
 }
 
-.subPop {
-  top: 64px !important;
-  ul.ant-menu-sub {
-    width: 160px;
-    padding: 12px 0;
-  }
-  .ant-menu-vertical.ant-menu-sub > .ant-menu-item {
-    line-height: 20px;
-    padding: 6px 16px;
-    margin: 0;
-    font-size: 16px;
-    font-weight: 600;
-    .anticon {
-      font-size: 16px;
-    }
-  }
-}

@@ -52,6 +52,7 @@ export interface LoginState {
 export interface RegistProps {
     registVisible:boolean
     setRegistVisible:any
+    setLoginVisible: any
 }
  
 export interface RegistState {

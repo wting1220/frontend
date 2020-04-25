@@ -1,25 +1,31 @@
-import React, { memo } from 'react'
-import { Form, Input, Button, Checkbox, Modal, } from 'antd'
-import { UserOutlined, LockOutlined } from '@ant-design/icons'
-import '../scss/login.scss'
-import { LoginProps } from '../utils/interface'
+import React, { memo } from "react";
+import { Form, Input, Button, Checkbox, Modal, message } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { LoginProps } from "../common/interface";
+import { loginAPI } from "../common/api.js";
+import jwt_decode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { changeUserAction } from "../actions/action";
+import "../scss/login.scss";
 
-export default memo(function Login({loginVisible, setLoginVisible, setRegistVisible}: LoginProps) {
+function Login({
+  loginVisible,
+  setLoginVisible,
+  setRegistVisible,
+}: LoginProps) {
+  const dispatch = useDispatch();
 
-  const onFinish = (values: any) => {
-    console.log(values)
-  }
-  
   return (
     <div>
-      <span className="cur" onClick={() => setLoginVisible(true)}>登陆</span>
+      <span className="cur" onClick={() => setLoginVisible(true)}>
+        登陆
+      </span>
       <Modal
         title="登陆"
         centered
         visible={loginVisible}
-        onOk={() => setLoginVisible(false)}
         onCancel={() => setLoginVisible(false)}
-        footer=''
+        footer=""
         forceRender
       >
         <div className="login">
@@ -27,19 +33,22 @@ export default memo(function Login({loginVisible, setLoginVisible, setRegistVisi
             name="login"
             className="login-form"
             initialValues={{ remember: true }}
-            onFinish={onFinish}
+            onFinish={submit}
             scrollToFirstError
           >
             <Form.Item
               name="username"
-              rules={[{ required: true, message: 'Please input your Username!' }]}
+              rules={[{ required: true, message: "请输入用户名或邮箱!" }]}
             >
-              <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                placeholder="Username or Email"
+              />
             </Form.Item>
 
             <Form.Item
               name="password"
-              rules={[{ required: true, message: 'Please input your Password!' }]}
+              rules={[{ required: true, message: "请输入密码!" }]}
             >
               <Input
                 prefix={<LockOutlined className="site-form-item-icon" />}
@@ -53,18 +62,52 @@ export default memo(function Login({loginVisible, setLoginVisible, setRegistVisi
                 <Checkbox>Remember me</Checkbox>
               </Form.Item>
 
-              <span className="login-form-forgot">
-                Forgot password
-                    </span>
+              <span className="login-form-forgot">Forgot password</span>
             </Form.Item>
 
             <Form.Item>
-              <Button type="primary" htmlType="submit" className="login-form-button">Log in</Button>
-              <p className='go-regist'>No account ？     <span className='cur' onClick={() => {setRegistVisible(true); setLoginVisible(false)}} >register now!</span></p>
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+              >
+                Login
+              </Button>
+              <p className="go-regist">
+                No account ？{" "}
+                <span
+                  className="cur"
+                  onClick={() => {
+                    setRegistVisible(true);
+                    setLoginVisible(false);
+                  }}
+                >
+                  register now!
+                </span>
+              </p>
             </Form.Item>
           </Form>
-          </div>
+        </div>
       </Modal>
     </div>
-  )
-})
+  );
+
+  // 提交登陆表单
+  function submit(values: any) {
+    loginAPI(values).then((data) => {
+      if (data.err === null) {
+        message.success(data.msg);
+        localStorage.setItem("user", data.token);
+        // 将用户信息存进redux中
+        let { id, img } = jwt_decode(data.token);
+        dispatch(changeUserAction({ userID: id, userImg: img }));
+        // 关闭登陆框
+        setLoginVisible(false);
+      } else {
+        message.error(data.msg);
+      }
+    });
+  }
+}
+
+export default memo(Login);

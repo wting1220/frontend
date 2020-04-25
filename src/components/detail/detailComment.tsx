@@ -2,7 +2,7 @@ import React, { useState, memo } from 'react';
 import { Avatar, Button, Input, Comment, Tooltip } from 'antd'
 import { LikeOutlined, MessageOutlined } from '@ant-design/icons'
 import { useLocation } from 'react-router'
-import { userText } from '../../utils/commen'
+import { userText } from '../../common/commen'
 
 export default memo(function DetailComment({ info }: any) {
 

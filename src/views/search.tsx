@@ -4,7 +4,7 @@ import { Tabs, Row, Col } from 'antd'
 import { useHistory, useLocation } from 'react-router'
 import FirstList from '../components/content/firstList'
 import '../scss/search.scss'
-import { userTagsShow } from '../utils/commen'
+import { userTagsShow } from '../common/commen'
 
 const { TabPane } = Tabs
 
