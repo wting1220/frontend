@@ -88,17 +88,19 @@ $color: #f6b7f5;
     .add-div {
       min-height: 100px;
       border: 1px solid $color;
-      padding: 3px;
+      padding: 3px 3px 10px;
       background-color: #faeff9;
       border-radius: 6px;
       &:focus {
         outline-color: $color;
         border-radius: 3px;
+        box-shadow: 0 0 0 2px rgba(221, 160, 221, 0.2)
       }
       .add-input {
-        &:empty::before {
-          color: lightgrey;
-          content: attr(placeholder);
+        background-color: rgba(0,0,0,0);
+        border: none;
+        &:focus {
+          box-shadow: none;
         }
       }
     }
@@ -172,6 +174,7 @@ $color: #f6b7f5;
       padding: 10px 0;
       @include flex(center);
       .span-icon {
+        display: inline-block;
         color: #928af1;
         margin-right: 16px;
       }
@@ -194,6 +197,7 @@ $color: #f6b7f5;
     }
     .show-detail-content {
       margin: 0 16px;
+      flex: 1;
       .show-user {
         @include flex(center);
         .name {
@@ -206,6 +210,12 @@ $color: #f6b7f5;
         }
         .label {
           font-size: 12px;
+          span::after {
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            background-color: black;
+          }
         }
       }
       .content {

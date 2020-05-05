@@ -1,6 +1,7 @@
 import React from 'react'
 import { Menu } from 'antd'
 import { TagsProps } from '../../common/interface'
+import { translate } from '../../common/zh_en'
 import './index.scss'
 
 const Tags = ({ tags, current, oncurrent }: TagsProps) => {
@@ -12,7 +13,7 @@ const Tags = ({ tags, current, oncurrent }: TagsProps) => {
           {
             tags.map((item: any) => {
               return (
-                <Menu.Item title={item.label} key={item.label === '推荐' ? 'recommend' : item.label} >{item.label}</Menu.Item>
+                <Menu.Item title={item.label} key={translate[item.label] || item.label} >{item.label}</Menu.Item>
               )
             })
           }

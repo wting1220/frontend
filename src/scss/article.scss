@@ -60,25 +60,24 @@
             margin-bottom: 12px;
             font-size: 16px;
           }
-          .ant-menu-horizontal {
-            border-bottom: none;
-            .ant-menu-item-selected {
+          .ant-radio-button-wrapper {
+            border: 1px solid #f1f1f1;
+            height: 26px;
+            line-height: 16px;
+            margin: 0 8px 8px 0;
+            padding: 4px 8px;
+            color: #909090;
+            border-radius: 4px;
+            &:focus-within,
+            &:hover,
+            &:focus {
               background-color: #faeff9;
             }
-            .ant-menu-item {
-              border: 1px solid #f1f1f1;
-              height: 26px;
-              line-height: 18px;
-              margin: 0 8px 8px 0;
-              padding: 4px 8px;
-              color: #909090;
-              &:focus-within,
-              &:hover,
-              &:focus {
-                background-color: #faeff9;
-              }
+            &::before {
+              width: 0;
             }
           }
+        
         }
         .btn {
           padding-top: 12px;

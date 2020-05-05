@@ -4,6 +4,8 @@ import TopicNav from '../components/topic/topicNav'
 import TopicContent from '../components/topic/topicContent'
 import TopicRight from '../components/topic/topicRight'
 import Tags from '../components/tagsList/tags'
+import { getThemeAPI } from '../common/api';
+import { useParams, useLocation } from 'react-router';
 
 export default memo(function Topic() {
 

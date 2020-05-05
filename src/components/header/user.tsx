@@ -8,8 +8,12 @@ import {
   SettingOutlined,
   TagOutlined,
 } from "@ant-design/icons";
+import { useSelector } from "react-redux";
 
 export default memo(function User({ handleNav }: any) {
+
+  const img = useSelector((state:any) => state.userImg)
+
   // header中用户信息的下拉菜单
   const userMenu = (
     <Menu onClick={handleNav}>
@@ -48,7 +52,7 @@ export default memo(function User({ handleNav }: any) {
         placement="bottomRight"
       >
         {/* {判断redux中是否存了头像} */}
-        <Avatar className="cur" size={32} icon={<UserOutlined />}></Avatar>
+        {img !== null ? <Avatar className="cur" size={32} src={`http://localhost:3000${img}`} /> : <Avatar className="cur" size={32} icon={<UserOutlined />}></Avatar>}
       </Dropdown>
     </div>
   );

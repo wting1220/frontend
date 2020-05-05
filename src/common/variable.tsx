@@ -75,9 +75,9 @@ export const secondMenu = [
 // 发布热点添加话题的下拉菜单
 export const topicAddMenuLists = (data: any) => (
   <Menu>
-    {data.map((item: any) => {
+    {data.map((item: any,index:number) => {
       return (
-        <Menu.Item key={item.id}>
+        <Menu.Item key={index}>
           {item.name === "不添加任何话题" ? (
             <>
               <Avatar shape="square" size={42} icon={<StopOutlined />} />

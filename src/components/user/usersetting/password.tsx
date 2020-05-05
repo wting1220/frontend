@@ -34,8 +34,8 @@ export default memo(function Password() {
       <ul>
         <h1 className="title">修改密码</h1>
         <Form onFinish={submit} form={form}>
-          {labels.map((item) => (
-            <div className="map-formItem">
+          {labels.map((item,index:number) => (
+            <div className="map-formItem" key={index}>
               <span className="label">{item.label}</span>
               <Form.Item key={item.key} name={item.name}>
                 <Input.Password placeholder={item.placeholder} />

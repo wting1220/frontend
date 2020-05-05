@@ -31,7 +31,7 @@ export default memo(function ThemeUser() {
       <ul className='user'>
         {
           list.map((item:any) => {
-            return <li className='cur' onClick={gotoUserInfo}><Tooltip placement='top' title={userText(value)} getPopupContainer={(node: any) => node}>
+            return <li className='cur' onClick={gotoUserInfo} key={item}><Tooltip placement='top' title={userText(value)} getPopupContainer={(node: any) => node}>
               <div><Avatar size={46} /></div>
           <span>{item}</span>
             </Tooltip></li>

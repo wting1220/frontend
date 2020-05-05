@@ -52,7 +52,7 @@ const routes = [
                 component: ThemeList,
               },
               {
-                path: '/theme/:id',
+                path: '/theme/:tid',
                 name: 'themedetail',
                 exact: true,
                 component: ThemeDetail,
@@ -109,7 +109,7 @@ const routes = [
             ]
           },
           {
-            path: '/detail',
+            path: '/detail/:aid?',
             name: 'detail',
             component: Detail,
           },

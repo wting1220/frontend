@@ -11,9 +11,9 @@ export default memo(function UserSetting(props: any) {
   let { type } : any= useParams()
   // 导航栏
   const nav = [
-    { key: "profile", title: "个人信息" },
-    { key: "password", title: "修改密码" },
-    { key: "mail", title: "邮件设置" },
+    { label: "个人信息" },
+    { label: "修改密码" },
+    { label: "邮件设置" },
   ];
 
   useEffect(() => {
@@ -23,8 +23,7 @@ export default memo(function UserSetting(props: any) {
 
   return (
     <div className="user-setting">
-      <Tags current={current} oncurrent={handleCurrent} tags={tags} />
-
+      <Tags current={current} oncurrent={handleCurrent} tags={nav} />
       <Row gutter={20}>
         <Col xs={24} sm={24} md={18} lg={18} xl={18}>
           <div className="setting-container">

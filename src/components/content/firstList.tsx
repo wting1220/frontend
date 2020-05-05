@@ -1,59 +1,67 @@
-import React from 'react'
-import { Divider, Skeleton, Tooltip } from 'antd'
-import { HeartOutlined, MessageOutlined, ShareAltOutlined } from '@ant-design/icons'
-import { FirstListProps } from 'src/common/interface'
+import React, { useState, useEffect } from 'react'
+import { Divider, Tooltip, Empty } from 'antd'
+import { HeartOutlined, MessageOutlined, ShareAltOutlined, HeartFilled } from '@ant-design/icons'
+import { FirstListProps } from '../../common/interface'
 import { useHistory } from 'react-router'
-import { IconText, userText } from 'src/common/commen'
+import { likeAPI } from '../../common/api.js'
+import { userText } from '../../common/commen'
 import photo from '../../assets/4da52382276a71cebd0b922c535ab7ce.jpg'
+import moment from 'moment'
+import { useSelector } from 'react-redux'
 
-const FirstList = ({ firstList }: FirstListProps) => {
+const FirstList = ({ value }: FirstListProps) => {
 
-	let history = useHistory()
-	const gotoDetail = () => {
-		history.push('/detail')
-	}
+  const uid = useSelector((state: any) => state.userID)
+  const [likeUtil, setLikeUtil] = useState<any>(value.likes && value.likes.lists && value.likes.lists.includes(uid))
+  const [likeCount, setLikeCount] = useState<number>(value.likes && value.likes.lists ? value.likes.lists.length : 0)
+  let history = useHistory()
+  const gotoDetail = (aid:any) => {
+    history.push(`/detail/${aid}`)
+  }
 
-	return (
-		<div>
-			<Skeleton active loading={firstList.length === 0} />
-			{
-				firstList.map((value: any, index: any) => {
-					return (
-						<div key={index}>
-							<div className="list-content">
-								<div className="item-left">
-									<div className="info">
-										<ul>
-											<li className="item cur">{value.topic}</li>
-											<li className="item cur hov">
-												<Tooltip placement='top' title={userText(value)} getPopupContainer={(node: any) => node}>{value.name}</Tooltip>
-											</li>
-											<li className="item">{value.time}分钟前</li>
-											<li className="cur hov">{value.tags}</li>
-										</ul>
-									</div>
-									<div className="title" onClick={gotoDetail}>
-										<h2 className="cur">{value.title}</h2>
-									</div>
-									<div className="comment">
-										<ul>
-											<IconText icon={HeartOutlined} text={value.like} key="list-vertical-like-o" />
-											<IconText icon={MessageOutlined} text={value.recommend} key="list-vertical-message" />
-											<IconText icon={ShareAltOutlined} text="" key="list-vertical-share" />
-										</ul>
-									</div>
-								</div>
-								<div className="item-right">
-									<img src={photo} alt='' />
-								</div>
-							</div>
-							<Divider />
-						</div>
-					)
-				})
-			}
-		</div>
-	)
+  return (
+    <div>
+      <div className="list-content">
+        <div className="item-left">
+          <div className="info">
+            <ul>
+              <li className="item cur">专栏</li>
+              <li className="item cur hov">
+                <Tooltip placement='top' title={userText(value.author)} getPopupContainer={node => node}>{value.author && value.author.username}</Tooltip>
+            </li>
+            <li className="item">
+              {moment(+value.publish_time).fromNow()}
+            </li>
+              <li className="cur hov">{value.label}</li>
+            </ul>
+        </div>
+        <div className="title" onClick={() => gotoDetail(value._id)}>
+            <h2 className="cur">{value.title}</h2>
+          </div>
+          <div className="comment">
+          <ul>
+            <li onClick={() => like(value._id)} className="cur">{likeUtil ? <HeartFilled style={{color:'plum'}} /> : <HeartOutlined />}{likeCount}</li>
+            <li className="cur"><MessageOutlined />{0}</li>
+            <li className="cur"><ShareAltOutlined /></li>
+            </ul>
+          </div>
+        </div>
+        <div className="item-right">
+          <img src={photo} alt='' />
+        </div>
+      </div>
+      <Divider />
+    </div>
+  )
+
+  function like(aid:any) {
+    setLikeUtil(!likeUtil)
+    likeAPI({ uid, aid }).then((data) => { 
+      if (data.err === null) { 
+        setLikeCount(data.count)
+      }
+    })
+  }
 }
 
 export default FirstList;

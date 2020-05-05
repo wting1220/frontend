@@ -1,7 +1,9 @@
 import React, { memo, useState, useEffect } from 'react'
-import { Avatar } from 'antd'
+import { Avatar, message } from 'antd'
 import photo from '../../assets/1.jpg'
 import { useHistory } from 'react-router'
+import { ThemeListAPI } from '../../common/api.js'
+import { resolveSoa } from 'dns'
 
 export default memo(function ThemeList() {
 
@@ -9,19 +11,7 @@ export default memo(function ThemeList() {
   let history = useHistory()
 
   useEffect(() => {
-    setResData([
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-      { title: '我自己', attentions: 43, topic: 45 },
-    ])
+    getThemeList()
   }, [])
 
   return (
@@ -29,22 +19,31 @@ export default memo(function ThemeList() {
       <h2 className='title'>全部话题</h2>
       <ul className='theme-lists'>
         {
-          resData.map((item: any) => {
-            return (
-              <li onClick={() => history.push(`/theme/1`)}>
+          resData.length > 0 && resData.map((item: any) => (
+            <li onClick={() => history.push(`/theme/${item._id}`)} key={item._id}>
                 <div className='cur'>
-                  <Avatar shape="square" size={72} src={photo} />
+                  <Avatar shape="square" size={72} src={`http://localhost:3000${item.img}`} />
                 </div>
                 <div className='li-right'>
-                  <span className='topic-name cur'>{item.title}</span>
-                  <span className='topic-detail'>{item.attentions}关注 · {item.topic}沸点</span>
+                  <span className='topic-name cur'>{item.name}</span>
+                  <span className='topic-detail'>{item.attention}关注 · {item.topic}沸点</span>
                   <span className='topic-btn cur'> + 关注</span>
                 </div>
               </li>
             )
-          })
+          )
         }
       </ul>
     </div>
   )
+
+  function getThemeList() {
+    ThemeListAPI().then(data => { 
+      if (data.err === null) {
+        setResData(resData.concat(data.data))
+      } else { 
+        message.warn(data.msg)
+      }
+    })
+  }
 })

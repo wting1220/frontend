@@ -7,7 +7,7 @@ import {
   Modal,
   message,
 } from 'antd';
-import { getMailCodeAPI, getRepeatUserAPI, registAPI } from '../common/api.js'
+import { getMailCodeAPI, registAPI } from '../common/api.js'
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import React, { useRef } from 'react'
 import '../scss/regist.scss'
@@ -41,7 +41,7 @@ const Regist = ({ registVisible, setRegistVisible, setLoginVisible }: RegistProp
               rules={[{ required: true,  message: '请输入用户名'}]}
               validateTrigger='blur'
             >
-              <Input onBlur={handleUser} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+              <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
             </Form.Item>
 
             <Form.Item
@@ -89,7 +89,7 @@ const Regist = ({ registVisible, setRegistVisible, setLoginVisible }: RegistProp
                 },
               ]}
             >
-              <Input onBlur={handleUser} ref={email} prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email ..." />
+              <Input ref={email} prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email ..." />
             </Form.Item>
 
             <Form.Item extra="We must make sure that your are a human.">
@@ -146,17 +146,6 @@ const Regist = ({ registVisible, setRegistVisible, setLoginVisible }: RegistProp
       }
     })
   }
-
-  // 校验用户名或者邮箱是否已存在
-  function handleUser(e:any) {
-    let label = e.target.id.split('_')[1]
-    getRepeatUserAPI({ [label]: e.target.value }).then(data => {
-      if (data.err === null) {
-        message.warn(data.msg)
-      }
-    })
-  };
-
 }
 
 export default Regist

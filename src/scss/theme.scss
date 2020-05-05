@@ -16,6 +16,7 @@
         height: 108px;
         @include flex(center, flex-start);
         padding: 18px 14px;
+        min-width: 220px;
         .ant-avatar {
           border-radius: 8px;
           margin-right: 20px;

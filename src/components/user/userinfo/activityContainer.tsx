@@ -57,9 +57,9 @@ export default memo(function ActivityContainer({ nav }: any) {
         nav
       ) && (
         <div className="activity-container-title">
-          {secondMenu.map((item: any) => {
+          {secondMenu.map((item: any,index:number) => {
             return item.key === nav ? (
-              <>
+              <div key= {index}>
                 <div>
                   <span className="title-left">{item.label} </span>
                   {nav === "activity" && <span>赞了这篇文章</span>}
@@ -76,7 +76,7 @@ export default memo(function ActivityContainer({ nav }: any) {
                       ))}
                   </Menu>
                 </div>
-              </>
+              </div>
             ) : null;
           })}
         </div>

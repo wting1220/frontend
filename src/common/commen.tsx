@@ -33,46 +33,38 @@ export const validateMessages = {
   },
 };
 
-// 首页list点赞评论分享
-export const IconText = ({ icon, text }: any) => (
-  <li className="cur">
-    {React.createElement(icon)}
-    {text}
-  </li>
-);
-
 // 鼠标挪上去显示用户tooltip信息
 export const userText = (info: any) => (
-  <div>
-    <div className="tooltip-top">
-      <div className="top-img">
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-      </div>
-      <div className="top-detail">
-        <div>
-          <span>{info.name || ""}</span>
-          <span>{info.level || ""}</span>
+  info && <div>
+      <div className="tooltip-top">
+        <div className="top-img">
+          <Avatar src={`http://localhost:3000${info.img}`} />
         </div>
-        <div>{info.label}</div>
+        <div className="top-detail">
+          <div>
+            <span>{info.username || ""}</span>
+            <span>{info.level || ""}</span>
+          </div>
+          <div>{info.homepage || "暂无"}</div>
+        </div>
       </div>
-    </div>
-    <div className="tooltip-bottom">
-      <div className="bottom-like">
-        <div>{info.count || 0}</div>
-        <div>关注</div>
+      <div className="tooltip-bottom">
+        <div className="bottom-like">
+          <div>{info.attention || 0}</div>
+          <div>关注</div>
+        </div>
+        <div className="bottom-like">
+          <div>{info.attention || 0}</div>
+          <div>关注者</div>
+        </div>
+        <Button>关注</Button>
       </div>
-      <div className="bottom-like">
-        <div>{info.count || 0}</div>
-        <div>关注者</div>
-      </div>
-      <Button>关注</Button>
-    </div>
   </div>
 );
 
 // 用户或者标签信息展示模块
 export const userTagsShow = (item: any, type: string) => (
-  <div className="userTagsShow cur">
+  <div className="userTagsShow cur" key={item.name}>
     <div className="userTagsShow-left">
       <div>
         <Avatar size={45} icon={<UserOutlined />} />
@@ -104,3 +96,10 @@ export const userTagsShow = (item: any, type: string) => (
     <Button>关注</Button>
   </div>
 );
+
+// 上传图片
+export function getBase64(img: any, callback:any) {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result));
+  reader.readAsDataURL(img);
+}

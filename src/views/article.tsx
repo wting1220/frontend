@@ -3,7 +3,7 @@ import "../scss/article.scss";
 import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
 import "react-markdown-editor-lite/lib/index.css";
-import { Input, Dropdown, Button, Menu, Upload, message } from "antd";
+import { Input, Dropdown, Button, Upload, message, Radio, Spin } from "antd";
 import {
   CaretDownOutlined,
   CaretUpOutlined,
@@ -44,26 +44,26 @@ export default memo(function Article() {
       <h2>发布文章</h2>
       <div className="type-box">
         <p>分类</p>
-        <Menu mode="horizontal" onClick={handleLabel} selectedKeys={[label]}>
+        <Radio.Group onChange={handleLabel} defaultValue={label}>
           {labels &&
             labels.map((item: any) => (
-              <Menu.Item key={item.label}>{item.label}</Menu.Item>
+              <Radio.Button value={item.label} key={item.label}>{item.label}</Radio.Button>
             ))}
-        </Menu>
+        </Radio.Group>
       </div>
       {childVisible && (
         <div className="label-box">
           <p>标签</p>
-          <Menu mode="horizontal" onClick={handleChild} selectedKeys={[child]}>
+          <Radio.Group onChange={handleChild} defaultValue={child}>
             {labels &&
               labels.map(
                 (item: any) =>
                   label === item.label &&
                   item.child.map((child: any) => (
-                    <Menu.Item key={child}>{child}</Menu.Item>
+                    <Radio.Button value={child} key={child}>{child}</Radio.Button>
                   ))
               )}
-          </Menu>
+          </Radio.Group>
         </div>
       )}
       <div className="btn">
@@ -107,7 +107,6 @@ export default memo(function Article() {
 
   // 发表文章
   function publish() {
-    setVisible(false);
     publishArticleAPI({
       uid,
       title,
@@ -115,7 +114,14 @@ export default memo(function Article() {
       label,
       child,
     }).then((data) => {
-      data.err === null ? message.success(data.msg) : message.warn(data.msg);
+      setVisible(false);
+      if (data.err === null) {
+        message.success(data.msg)
+        setTitle("")
+        setContent("")
+        setLabel("")
+        setChild("")
+      } else message.warn(data.msg);
     });
   }
 
@@ -147,16 +153,16 @@ export default memo(function Article() {
   }
 
   // 父标签点击
-  function handleLabel({ key }: any) {
-    setLabel(key);
+  function handleLabel({ target }:any) {
+    setLabel(target.value);
     setVisible(true);
     setChildVisible(true);
   }
 
   // 子标签点击事件
-  function handleChild({ key }: any) {
+  function handleChild({ target }: any) {
     setVisible(true);
-    setChild(key);
+    setChild(target.value);
   }
 
   // 监听input标题

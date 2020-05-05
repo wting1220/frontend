@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from 'react'
 import Tags from '../components/tagsList/tags'
-import { Tabs, Row, Col } from 'antd'
+import { Tabs, Row, Col, Empty } from 'antd'
 import { useHistory, useLocation } from 'react-router'
 import FirstList from '../components/content/firstList'
 import '../scss/search.scss'
@@ -75,16 +75,18 @@ export default memo(function Search() {
                     tabNav.map((item: { key: string, tab: string }) => {
                       return (
                         <TabPane tab={item.tab} key={item.key}>
-                          <FirstList firstList={lists} />
+                          {
+                            lists.length <= 0
+                              ? <Empty description='暂无数据' />
+                              : lists.map((value: any, index: any) => <FirstList value={value} key={index} />)
+                          }
                         </TabPane>
                       )
                     })
                   }
                 </Tabs>
                 : <div>
-                  {lists.map((item: any) => {
-                    return userTagsShow(item, location.search.split('=')[2])
-                  })}
+                  {lists.map((item: any) => userTagsShow(item, location.search.split('=')[2]))}
                 </div>
             }
           </div>

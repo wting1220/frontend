@@ -9,8 +9,8 @@ export default memo(withRouter(function Message(props: any) {
   const [current, setCurrent] = useState<string>('')
   const [tags, setTags] = useState<any>([])
   const personTags = [
-    { title: '个人信息', key: 'personal' },
-    { title: '系统信息', key: 'system' },
+    { label: '用户信息' },
+    { label: '系统信息' },
   ]
   let history = useHistory()
   const handleCurrent = (e: any) => {

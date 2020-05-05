@@ -15,7 +15,7 @@ export interface ContentRightState {
 }
 
 export interface FirstListProps {
-    firstList?:any
+    value?:any
 }
  
 export interface FirstListState {

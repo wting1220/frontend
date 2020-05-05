@@ -93,13 +93,25 @@ const fetchData = (url = '', data = {}, method = 'GET') => {
 // }
 
 // 用户信息
-export const getRepeatUserAPI = data => fetchData('/api/GetRepeatUserAPI', data, 'GET') 
 export const getMailCodeAPI = data => fetchData('/api/GetMailCodeAPI', data, 'POST')
 export const registAPI = data => fetchData('/api/regist', data, 'POST')
 export const loginAPI = data => fetchData('/api/login', data, 'POST')
 export const updateUserAPI = data => fetchData('/api/UpdateUserAPI', data, 'PUT')
 export const userInfoAPI = data => fetchData('/api/UserInfoAPI', data, 'GET')
+// 关注用户
+export const attentionUserAPI = data => fetchData('/api/AttentionUserAPI', data, 'POST')
 // 标签
-export const tagsListAPI = () => fetchData('/api/TagsListAPI', 'GET')
+export const tagsListAPI = () => fetchData('/api/TagsListAPI')
 // 文章
 export const publishArticleAPI = data => fetchData('/api/PublishArticleAPI', data, 'POST')
+export const articleListAPI = data => fetchData('/api/ArticleListAPI', data, 'GET')
+export const articleDetailAPI = data => fetchData('/api/ArticleDetailAPI', data, 'GET')
+export const likeAPI = data => fetchData('/api/LikeAPI', data, 'POST')
+export const commentAPI = data => fetchData('/api/CommentAPI', data, 'POST')
+// 话题
+export const addThemeAPI = data => fetchData('/api/AddThemeAPI', data, 'POST')
+export const getThemeAPI = data => fetchData('/api/GetThemeAPI', data, 'GET')
+export const ThemeListAPI = () => fetchData('/api/ThemeListAPI')
+// 沸点
+export const addTopicAPI = data => fetchData('/api/AddTopicAPI', data, 'POST')
+export const topicListAPI = data => fetchData('/api/TopicListAPI', data, 'GET')
